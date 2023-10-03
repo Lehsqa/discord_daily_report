@@ -51,7 +51,7 @@ class Bot(commands.Bot):
                                                                                 hours=time_difference())
                                                                             ))
                     await reply_request(message, text="Your request was saved")
-                    logger.info(f'User "{message.author.name}": send his report')
+                    logger.info(f'User "{message.author.name}": send report')
                 except DatabaseError:
                     await reply_request(message, text="There are some problem with saving your request")
                     logger.info(f'User "{message.author.name}": get error with database')
