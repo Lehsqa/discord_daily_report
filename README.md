@@ -2,6 +2,7 @@
 
 ## Configuration (config.py)
 
+### `BOT_TOKEN` - token of bot
 ### `SERVER_ID` - identification of server (required)
 ### `CATEGORY_NAME` - name of category of report channels
 ### `CHANNELS_ROLES_NAMES_DICT` - channels name and roles name dict
