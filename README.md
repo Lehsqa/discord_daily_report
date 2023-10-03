@@ -16,4 +16,4 @@
 ## Running
 
 1) ### `python app/main.py`
-2) ### Sent command in PM `!create_channels_roles` for creating channels and roles for the server and after that define user roles
+2) ### Sent command in PM `!create_channels_roles` for creating channels and roles for the server and after that define user roles for each user
