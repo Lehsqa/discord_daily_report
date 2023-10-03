@@ -1,4 +1,4 @@
-BOT_TOKEN = 'MTE1ODQzOTQxMzY3MjU5NTU3Ng.G01fVy.sSKddAzlmOQ9Ax7j3Biq4Fm5HcA3PQ4hrtLzqc'
+BOT_TOKEN = ''
 DATABASE_URL = 'sqlite+aiosqlite:///bot.sqlite3'
 TIME_ZONE = 'Europe/Berlin'
 REPORT_REQUEST_TIME = 18
