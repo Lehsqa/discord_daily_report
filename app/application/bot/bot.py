@@ -23,7 +23,7 @@ class Bot(commands.Bot):
         self.token = token
 
     @staticmethod
-    def time_check():
+    def time_check() -> bool:
         return (time(REPORT_REQUEST_TIME, 0, 0) <
                 datetime.now(pytz.timezone(TIME_ZONE)).time() <
                 time(DAILY_REPORT_TIME, 0, 0))
@@ -43,15 +43,20 @@ class Bot(commands.Bot):
             if self.time_check():
                 try:
                     server = self.get_guild(int(SERVER_ID))
-                    department = get_department(server, message)
-                    await UsersRepository().create_or_update(UserUncommited(name=message.author.name,
-                                                                            department=department,
-                                                                            report=message.content,
-                                                                            update_date=datetime.now() + timedelta(
-                                                                                hours=time_difference())
-                                                                            ))
-                    await reply_request(message, text="Your request was saved")
-                    logger.info(f'User "{message.author.name}": send report')
+                    
+                    if server:
+                        department: str = get_department(server, message)
+                        await UsersRepository().create_or_update(UserUncommited(name=message.author.name,
+                                                                                department=department,
+                                                                                report=message.content,
+                                                                                update_date=datetime.now() + timedelta(
+                                                                                    hours=time_difference())
+                                                                                ))
+                        await reply_request(message, text="Your request was saved")
+                        logger.info(f'User "{message.author.name}": send report')
+                    else:
+                        await reply_request(message, text="Server doesnt exist")
+                        logger.info(f'User "{message.author.name}": server doesnt exist')
                 except DatabaseError:
                     await reply_request(message, text="There are some problem with saving your request")
                     logger.info(f'User "{message.author.name}": get error with database')
